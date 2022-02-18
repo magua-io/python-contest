@@ -1,7 +1,6 @@
 # Solution 1
 def cost(n, hungers, min_hunger):
     bags = 0
-    n = len(hungers)
     for i in range(n - 1):
         if hungers[i] > min_hunger:
             diff = min(hungers[i], hungers[i + 1]) - min_hunger

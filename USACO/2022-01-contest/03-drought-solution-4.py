@@ -14,37 +14,6 @@ def find_minimum_bags_of_corn(n, hungers):
         if f < 0:
             return -1
 
-    """
-    f + o0 = h0
-    f + o0 + o1 = h1
-    f + o1 + o2 = h2
-    f + o2 + o3 = h3
-    ...
-    f + o(N-3) + O(N-2) = h(N-2)
-    f + o(N-2) = h(N-1)
-
-    o0 = h0 - f
-    o1 = h1 - o0 - f
-    o2 = h2 - o1 - f
-    o3 = h3 - o2 - f
-    ...
-    o(N-2) = h(N-1) - f
-
-    o0 = h0 - f
-    o1 = h1 - o0 - f = h1 - (h0 - f) -f = h1 - h0
-    o2 = h2 - o1 - f = h2 - (h1 - h0) - f = h2 - h1 + h0 -f
-    o3 = h3 - o2 - f = h3 - (h2 - h1 + h0 - f) - f = h3 - h2 + h1 - h0
-    ...
-    o(N-2) = h(N-1) - o(N-2) - f
-
-    if N-2 is odd, which means N is odd
-        o(N-2) = h(N-1) - h(N-2) + h(N-3) - ... + h1 - h0
-    if N-2 is even, which means N is even
-        o(N-2) = h(N-1) - h(N-2) + h(N-3) - ... - h1 + h0 -f
-
-    Therefore, if N odd, maximize f can decrease o(0), o(2), O(4), ..., O(N-1)
-    max_f = min(o(0), o(2), O(4), ..., O(N-1)
-    """
     o = [0] * (n - 1)
     for i in range(n - 1):
         o[i] = hungers[i] - f - o[i-1]
