@@ -12,7 +12,7 @@ line = []
 for _ in range(n):
     line.append(int(input()))
 
-# find two potention positions that could be Bessie
+# find  Bessie position
 bessie = 0
 move_left = True
 for i, h in enumerate(line):

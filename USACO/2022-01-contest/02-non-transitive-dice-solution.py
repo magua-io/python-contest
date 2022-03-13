@@ -1,6 +1,17 @@
 def win(a, b):
     return sum([x > y for x in a for y in b]) > sum([y > x for x in a for y in b])
 
+    # a_win = 0
+    # b_win = 0
+    # for num1 in a:
+    #     for num2 in b:
+    #         if num1 > num2:
+    #             a_win += 1
+    #         elif num2 > num1:
+    #             b_win += 1
+    # return True if a_win > b_win else False
+
+
 
 def solve():
     l = [int(x) for x in input().split()]
