@@ -8,7 +8,7 @@ sys.setrecursionlimit(1000000)
 N, M = map(int, input().split())
 single_graph = defaultdict(list)
 double_graph = defaultdict(list)
-impossible = False
+impossible = [False]
 answer = 0
 L = [0] * (N + 1)
 
@@ -16,16 +16,16 @@ L = [0] * (N + 1)
 def visit(x, v):
     L[x] = v
     for nei in single_graph[x]:
-        if L[nei] == 2:
-            impossible = True
+        if L[nei] == 3 - v:
+            impossible[0] = True
         if L[nei] == 0:
             visit(nei, v)
 
     for nei in double_graph[x]:
         if L[nei] == v:
-            impossible = True
+            impossible[0] = True
         if L[nei] == 0:
-            visit(nei, 1)
+            visit(nei, 3-v)
 
 
 for _ in range(M):
@@ -44,7 +44,7 @@ for i in range(1, N+1):
         visit(i, 1)
         answer += 1
 
-if impossible:
+if impossible[0] == True:
     print(0)
 else:
     print('1' + '0'*answer)
